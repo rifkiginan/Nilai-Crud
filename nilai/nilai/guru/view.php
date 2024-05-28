@@ -2,9 +2,9 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header row">
-                <div class="card-title h3 col-8">Data Siswa</div>
+                <div class="card-title h3 col-8">Data Guru</div>
                 <div class="col-4">
-                    <a href="?m=siswa&s=add" class="btn btn-lg btn-primary float-end">Tambah</a>
+                    <a href="?m=guru&s=add" class="btn btn-lg btn-primary float-end">Tambah</a>
                 </div>
             </div>
 
@@ -13,20 +13,19 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>NIS</th>
-                            <th>Nama Siswa</th>
-                            <th title="Jenis Kelamin">JK</th>
+                            <th>NIP</th>
+                            <th>Nama Guru</th>
                             <th>Tempat Lahir</th>
                             <th>Tanggal Lahir</th>
-                            <th>Kelas</th>
-                            <th>Foto</th>
+                            <th>telepon</th>
+                            <th>foto</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         include_once('config.php');
-                        $sql = "SELECT siswa.id, nis, nama, jk, tempat_lahir, tanggal_lahir, kelas, foto FROM siswa JOIN kelas ON kelas.id=siswa.kelas_id";
+                        $sql = "SELECT guru.id, nip, nama, tempat_lahir, tanggal_lahir, telepon, foto FROM guru";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result) > 0 ) {
                             $no = 1;
@@ -34,16 +33,15 @@
                                 $foto = isset($r['foto']) ? $r['foto'] : '0.png';
                                 echo '<tr>
                                     <td>'.$no.'</td>
-                                    <td>'.$r['nis'].'</td>
+                                    <td>'.$r['nip'].'</td>
                                     <td>'.$r['nama'].'</td>
-                                    <td>'.$r['jk'].'</td>
                                     <td>'.$r['tempat_lahir'].'</td>
                                     <td>' . date('d M Y', strtotime($r['tanggal_lahir'])) . '</td>
-                                    <td>'.$r['kelas'].'</td>
-                                    <td><img src="siswa/foto/' . $foto . '" alt="WebPro" height=74></td>
+                                    <td>'.$r['telepon'].'</td>
+                                    <td><img src="guru/foto/' . $foto . '" alt="WebPro" height=74></td>
                                     <td>
-                                        <a href="?m=siswa&s=edit&id='.$r['id'].'" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="?m=siswa&s=delete&id='.$r['id'].'" class="btn btn-danger btn-sm" onclick="return confirm(\'Yakin siswa akan dihapus?\')">Hapus</a>
+                                        <a href="?m=guru&s=edit&id='.$r['id'].'" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="?m=guru&s=delete&id='.$r['id'].'" class="btn btn-danger btn-sm" onclick="return confirm(\'Yakin guru akan dihapus?\')">Hapus</a>
                                     </td>
                                 </tr>';
                                 $no++;
@@ -59,3 +57,4 @@
             </div>
         </div>
     </div>
+</div>

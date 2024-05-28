@@ -5,18 +5,18 @@ switch ($submodule) {
         include('view.php');
         break;
     case 'add':
-        include('siswa/add.php');
+        include('guru/add.php');
         break;
     case 'save':
-        include('siswa/save.php');
+        include('guru/save.php');
         break;
     case 'edit':
-        include('siswa/edit.php');
+        include('guru/edit.php');
         break;
     case 'update':
-        include('siswa/update.php');
+        include('guru/update.php');
         break;
     case 'delete':
-        include('siswa/delete.php');
+        include('guru/delete.php');
         break;
 }
